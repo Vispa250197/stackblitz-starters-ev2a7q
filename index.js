@@ -6,6 +6,9 @@ let cors = require("cors");
 let app = express();
 app.use(cors());
 
+const port = 3000; // or any other port number you prefer
+
+
 
 
 let taxRate = 5;
