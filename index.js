@@ -1,12 +1,17 @@
 let express = require("express");
 let cors = require("cors");
 
+
+
 let app = express();
 app.use(cors());
+
+
 
 let taxRate = 5;
 let discountPercentage = 10;
 let loyaltyRate = 2;
+
 
 //endpoint 1
 app.get('/cart-total', (req, res) => {
