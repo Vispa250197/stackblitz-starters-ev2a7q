@@ -1,10 +1,8 @@
-const express = require('express');
-const { resolve } = require('path');
+let express = require("express");
+let cors = require("cors");
 
-const app = express();
-const port = 3000;
-
-app.use(express.static('static'));
+let app = express();
+app.use(cors());
 
 let taxRate = 5;
 let discountPercentage = 10;
