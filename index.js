@@ -6,6 +6,8 @@ app.use(cors());
 
 
 
+
+
 let taxRate = 5;
 let discountPercentage = 10;
 let loyaltyRate = 2;
@@ -83,6 +85,6 @@ app.get('/loyalty-Points', (req, res) => {
   res.send(CalculateLoyaltyPoint(PurchaseAmount));
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(3000, () => {
+  console.log(`Example app listening at http://localhost:${3000}`);
 });
