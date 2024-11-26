@@ -1,23 +1,18 @@
-let express = require("express");
-let cors = require("cors");
+let express = require('express');
+let cors = require('cors');
 
 let app = express();
 app.use(cors());
-
-
-
-
 
 let taxRate = 5;
 let discountPercentage = 10;
 let loyaltyRate = 2;
 
-
 //endpoint 1
 app.get('/cart-total', (req, res) => {
-  let newitemprice = parseFloat(req.query.newitemprice);
+  let newItemPrice = parseFloat(req.query.newItemPrice);
   let cartTotal = parseFloat(req.query.cartTotal);
-  res.send((newitemprice + cartTotal).toString());
+  res.send((newItemPrice + cartTotal).toString());
 });
 
 //endpoint 2
@@ -35,14 +30,14 @@ app.get('/membership-discount', (req, res) => {
 });
 
 //endpoint 3
-function CalculateTax(CartTotal) {
-  let TotalTax = (CartTotal * taxRate) / 100;
+function calculateTax(cartTotal) {
+  let TotalTax = (cartTotal * taxRate) / 100;
   return TotalTax.toString();
 }
 
-app.get('/Calculate-Tax', (req, res) => {
-  let CartTotal = parseFloat(req.query.CartTotal);
-  res.send(CalculateTax(CartTotal));
+app.get('/calculate-tax', (req, res) => {
+  let cartTotal = parseFloat(req.query.cartTotal);
+  res.send(calculateTax(cartTotal));
 });
 
 //endpoint 4
@@ -75,14 +70,14 @@ app.get('/shipping-cost', (req, res) => {
 });
 
 //endpoint 6
-function CalculateLoyaltyPoint(PurchaseAmount) {
-  let loyaltyPoint = PurchaseAmount * 2;
-  return loyaltyPoint.toString();
+function CalculateLoyaltyPoint(purchaseAmount) {
+  let loyaltypoint = purchaseAmount * 2;
+  return loyaltypoint.toString();
 }
 
-app.get('/loyalty-Points', (req, res) => {
-  let PurchaseAmount = parseFloat(req.query.PurchaseAmount);
-  res.send(CalculateLoyaltyPoint(PurchaseAmount));
+app.get('/loyalty-points', (req, res) => {
+  let purchaseAmount = parseFloat(req.query.purchaseAmount);
+  res.send(CalculateLoyaltyPoint(purchaseAmount));
 });
 
 app.listen(3000, () => {
